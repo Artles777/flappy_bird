@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi5xwp3g725a2"]
+
+[ext_resource type="Texture2D" uid="uid://d7l8pl2tkut1" path="res://assets/assets/textures/background.png" id="1_b1lry"]
+[ext_resource type="PackedScene" uid="uid://cun5w3klk1hvp" path="res://players/bird.tscn" id="2_24gdr"]
+
+[node name="World" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+scale = Vector2(1.00417, 0.994145)
+texture = ExtResource("1_b1lry")
+centered = false
+
+[node name="Bird" parent="." instance=ExtResource("2_24gdr")]
+position = Vector2(115, 427)
