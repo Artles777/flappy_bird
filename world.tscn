@@ -1,14 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi5xwp3g725a2"]
+[gd_scene load_steps=8 format=3 uid="uid://bi5xwp3g725a2"]
 
 [ext_resource type="Texture2D" uid="uid://d7l8pl2tkut1" path="res://assets/assets/textures/background.png" id="1_b1lry"]
+[ext_resource type="Script" path="res://world.gd" id="1_vwwdg"]
 [ext_resource type="PackedScene" uid="uid://cun5w3klk1hvp" path="res://players/bird.tscn" id="2_24gdr"]
+[ext_resource type="PackedScene" uid="uid://23v24t3oc78i" path="res://ui/menu_layer.tscn" id="3_6oir2"]
+[ext_resource type="PackedScene" uid="uid://dwavc3mbrml25" path="res://envs/ground.tscn" id="3_bhgdi"]
+[ext_resource type="PackedScene" uid="uid://tsh5a4xcksr4" path="res://envs/obstacle_spawner.tscn" id="4_x1c6y"]
+[ext_resource type="PackedScene" uid="uid://d1rfeu10ilna" path="res://ui/hud.tscn" id="6_ahqqn"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_vwwdg")
+
+[node name="HUD" parent="." instance=ExtResource("6_ahqqn")]
+
+[node name="MenuLayer" parent="." instance=ExtResource("3_6oir2")]
 
 [node name="background" type="Sprite2D" parent="."]
 scale = Vector2(1.00417, 0.994145)
 texture = ExtResource("1_b1lry")
 centered = false
 
+[node name="ObstacleSpawner" parent="." instance=ExtResource("4_x1c6y")]
+position = Vector2(800, 0)
+scale = Vector2(1.00417, 0.994145)
+
+[node name="Ground" parent="." instance=ExtResource("3_bhgdi")]
+position = Vector2(0, 681)
+
 [node name="Bird" parent="." instance=ExtResource("2_24gdr")]
 position = Vector2(115, 427)
+
+[connection signal="start_game" from="MenuLayer" to="." method="_on_menu_layer_start_game"]
+[connection signal="body_entered" from="Ground/DeathZone" to="." method="_on_death_zone_body_entered"]
+[connection signal="died" from="Bird" to="." method="_on_bird_died"]
+
+[editable path="Ground"]

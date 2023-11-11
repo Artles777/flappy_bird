@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1rfeu10ilna"]
+
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_7qcp0"]
+[ext_resource type="FontFile" uid="uid://cu2njkptpj3pc" path="res://fonts/flappi_font.tres" id="2_fdm7f"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_7qcp0")
+
+[node name="Score" type="Label" parent="."]
+offset_right = 481.0
+offset_bottom = 73.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_fdm7f")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
